@@ -80,35 +80,13 @@
       </div>
     </div>
     <div class="row setup-content" id="step-2">
+        <input type="hidden" value="1" id="activities-count">
+        <button id="add-new-activity" class="btn btn-primary btn-sm">Add New Activity</button>
       <div class="col-xs-6 col-md-offset-3">
         <div class="col-md-12">
           <h3> Step 2</h3>
-          <div class="form-group">
-            <div class="d-flex">
-                    <div class="form-group">
-                        <label class="control-label">Activity 1</label>
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Lesson Start Time</label>
-                        <input class="form-control activity-lesson-start-time" data-index="1" type="date">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Lesson End Time</label>
-                        <input class="form-control activity-lesson-end-time" data-index="1" type="date">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Activity Type</label>
-                        <select class="form-control activity-type" data-index="1">
-                            <option value="individual">Individual</option>
-                            <option value="group">Group</option>
-                            <option value="collaborate">Collaborate</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                    <label class="control-label">Timezone</label>
-                    <input class="form-control activity-time-zone" data-index="1" type="text">
-                    </div>
-            </div>
+          <div class="form-group" id="step-2-template-insert-here">
+            
           </div>
           <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Previous</button>
           <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
@@ -312,7 +290,7 @@
         <div class="col-md-12">
           <h3> Step 3</h3>
           <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Previous</button>
-          <button class="btn btn-success btn-lg pull-right" type="submit">Submit</button>
+          <button class="btn btn-success btn-lg pull-right" id="add-the-case">Submit</button>
         </div>
       </div>
     </div>
@@ -325,11 +303,40 @@
     </div>
 </div>
 
+<script id="step-2-template" type="text/template">
+    <div class="d-flex flex-row">
+        <div class="form-group">
+            <label class="control-label">Activity activity_no</label>
+        </div>
+        <div class="form-group">
+            <label class="control-label">Lesson Start Time</label>
+            <input class="form-control activity-lesson-start-time" data-index="activity_no" type="date">
+        </div>
+        <div class="form-group">
+            <label class="control-label">Lesson End Time</label>
+            <input class="form-control activity-lesson-end-time" data-index="activity_no" type="date">
+        </div>
+        <div class="form-group">
+            <label class="control-label">Activity Type</label>
+            <select class="form-control activity-type" data-index="activity_no">
+                <option value="individual">Individual</option>
+                <option value="group">Group</option>
+                <option value="collaborate">Collaborate</option>
+            </select>
+        </div>
+        <div class="form-group">
+        <label class="control-label">Timezone</label>
+        <input class="form-control activity-time-zone" data-index="activity_no" type="text">
+        </div>
+    </div>
+</script>
+
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js'>
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
+<script src="/js/multiform.js"></script>
 <script src="/js/datap.js"></script>
 @endsection

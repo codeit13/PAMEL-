@@ -1,48 +1,34 @@
 $(document).ready(function () {
-	var navListItems = $('div.setup-panel div a'),
-			allWells = $('.setup-content'),
-			allNextBtn = $('.nextBtn'),
-			  allPrevBtn = $('.prevBtn');
-  
-	allWells.hide();
-  
-	navListItems.click(function (e) {
-		e.preventDefault();
-		var $target = $($(this).attr('href')),
-				$item = $(this);
-  
-		if (!$item.hasClass('disabled')) {
-			navListItems.removeClass('btn-primary').addClass('btn-default');
-			$item.addClass('btn-primary');
-			allWells.hide();
-			$target.show();
-			$target.find('input:eq(0)').focus();
-		}
-	});
+	add_new_activity();
 	
-	allPrevBtn.click(function(){
-		var curStep = $(this).closest(".setup-content"),
-			curStepBtn = curStep.attr("id"),
-			prevStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().prev().children("a");
-			prevStepWizard.removeAttr('disabled').trigger('click');
+	$('#add-the-case').click(function() {
+		console.log("Submit Button Clicked");
+		
+		// Step 1 Values
+		let case_title = $('#case-title').val();
+		let mmla_goal = $('#mmla-goal').val();
+		let lesson_case_date = $('#lesson-case-date').val();
+		let lesson_case_start_time = $('#lesson-case-start-time').val();
+		let lesson_case_end_time = $('#lesson-case-end-time').val();
+
+		// Step 2 Values
+
 	});
-  
-	allNextBtn.click(function(){
-		var curStep = $(this).closest(".setup-content"),
-			curStepBtn = curStep.attr("id"),
-			nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
-			curInputs = curStep.find("input[type='text'],input[type='url']"),
-			isValid = true;
-  
-		$(".form-group").removeClass("has-error");
-		for(var i=0; i<curInputs.length; i++){
-			if (!curInputs[i].validity.valid){
-				isValid = false;
-				$(curInputs[i]).closest(".form-group").addClass("has-error");
-			}
-		}
-			nextStepWizard.removeAttr('disabled').trigger('click');
-	});
-  
-	$('div.setup-panel div a.btn-primary').trigger('click');
-  });
+
+	$('#add-new-activity').click(add_new_activity);
+
+	function add_new_activity() {
+		let activities_count  = $('#activities-count').val();
+
+		let step_2_template = document.getElementById("step-2-template");
+		let step_2_template_Html = step_2_template.innerHTML;
+
+		let newHtml = step_2_template_Html.replace(/activity_no/g, (parseInt(activities_count)+1));
+
+		$("#step-2-template-insert-here").append(newHtml);
+
+		$('#activities-count').val(parseInt(activities_count)+1);
+
+		return 'LOL';
+	}
+});
