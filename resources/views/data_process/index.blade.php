@@ -185,13 +185,19 @@
                 Requires Synchronization
                 </div>
                 <div class="col">
-                Data
+                    <input type="radio" value="Yes" name="Video" class="Video_features1"/> Yes
+                    <input type="radio" value="No" name="Video" class="Video_features1"/> No
+                    <div class="">
+                        <input type="text" class=""/>
+                    </div>
                 </div>
                 <div class="col">
-                Data
+                     <input type="radio" value="Yes" name="Google_form"/> Yes
+                     <input type="radio" value="No" name="Google_form"/> No
                 </div>
                 <div class="col">
-                Data
+                     <input type="radio" value="Yes" name="Graasp"/> Yes
+                     <input type="radio" value="No" name="Graasp"/> No
                 </div>
             </div>
             <div class="row">
@@ -199,13 +205,23 @@
                 Requires Time Homo Generation
                 </div>
                 <div class="col">
-                Data
+                     <input type="radio" value="Yes" name="Video" class="Video_features2"/> Yes
+                     <input type="radio" value="No" name="Video" class="Video_features2"/> No
+                     <div class="">
+                        <span>From</span>
+                        <input type="number" class=""/>
+                        <span>to</span>
+                        <input type="number" class=""/>
+                        <button type="submit">Click</button>
+                     </div>
                 </div>
                 <div class="col">
-                Data
+                     <input type="radio" value="Yes" name="Google_form"/> Yes
+                     <input type="radio" value="No" name="Google_form"/> No
                 </div>
                 <div class="col">
-                Data
+                     <input type="radio" value="Yes" name="Graasp"/> Yes
+                     <input type="radio" value="No" name="Graasp"/> No
                 </div>
             </div>
             <div class="row">
@@ -213,13 +229,30 @@
                 Requires Data Trimming
                 </div>
                 <div class="col">
-                Data
+                     <input type="radio" value="Yes" name="Video" class="Video_features3"/> Yes
+                     <input type="radio" value="No" name="Video" class="Video_features3"/> No
+                     <div class="">
+                        <span> Trim Rows From</span>
+                        <input type="number" class=""/>
+                        <span>to</span>
+                        <input type="number" class=""/>
+                        <button type="submit">Click</button>
+                     </div>
+                     <div class="">
+                        <span> Trim Columns From</span>
+                        <input type="number" class=""/>
+                        <span>to</span>
+                        <input type="number" class=""/>
+                        <button type="submit">Click</button>
+                     </div>
                 </div>
                 <div class="col">
-                Data
+                     <input type="radio" value="Yes" name="Google_form"/> Yes
+                     <input type="radio" value="No" name="Google_form"/> No
                 </div>
                 <div class="col">
-                Data
+                     <input type="radio" value="Yes" name="Graasp"/> Yes
+                     <input type="radio" value="No" name="Graasp"/> No
                 </div>
             </div>
             <div class="row">
@@ -227,13 +260,21 @@
                 Requires Denoising
                 </div>
                 <div class="col">
-                Data
+                     <input type="radio" value="Yes" name="Video" class="Video_features3"/> Yes
+                     <input type="radio" value="No" name="Video" class="Video_features3"/> No
+                     <div class="">
+                        <input type="checkbox" id="duplicates" name="duplicates" value="">
+                        <label for="duplicates"> Remove duplicates</label><br>
+                     </div>
+                     <input type="text" class="" />
                 </div>
                 <div class="col">
-                Data
+                     <input type="radio" value="Yes" name="Google_form"/> Yes
+                     <input type="radio" value="No" name="Google_form"/> No
                 </div>
                 <div class="col">
-                Data
+                     <input type="radio" value="Yes" name="Graasp"/> Yes
+                     <input type="radio" value="No" name="Graasp"/> No
                 </div>
             </div>
         </div>
