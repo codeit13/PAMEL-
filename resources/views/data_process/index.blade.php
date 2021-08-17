@@ -295,15 +295,203 @@
     <div class="row setup-content" id="step-5">
       <div class="col-xs-6 col-md-offset-3">
         <div class="col-md-12">
-          <h3> Step 2</h3>
-          <div class="form-group">
-            <label class="control-label">Company Name</label>
-            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name">
-          </div>
-          <div class="form-group">
-            <label class="control-label">Company Address</label>
-            <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address">
-          </div>
+          
+          
+          <h3> Step 5</h3>
+          
+          
+          <div class="container">
+            <div class="row">
+                <div class="col">
+                #
+                </div>
+                <div class="col">
+                Video Features
+                </div>
+                <div class="col">
+                Google Form
+                </div>
+                <div class="col">
+                Graasp
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                Requires Transformation
+                </div>
+                <div class="col">
+                    <input type="radio" value="Yes" name="Video" class="Video_features1"/> Yes
+                    <input type="radio" value="No" name="Video" class="Video_features1"/> No
+                    <span> Transform </span>
+                    //<input type="text" class="" placeholder="Add Rule"/>
+                    <button id="Transformation" type="submit"> Add Rule </button>
+                    
+                </div>
+                <div class="col">
+                     <input type="radio" value="Yes" name="Google_form"/> Yes
+                     <input type="radio" value="No" name="Google_form"/> No
+                </div>
+                <div class="col">
+                     <input type="radio" value="Yes" name="Graasp"/> Yes
+                     <input type="radio" value="No" name="Graasp"/> No
+                </div>
+             </div>
+            
+            
+            <div class="row">
+                <div class="col">
+                Enter Actors column no.
+                </div>
+                <div class="col">
+                
+                    <input type="number" class="" />
+                    <button id="" type="submit"> Add Rule </button>
+                    
+                </div>
+                <div class="col">
+                     <input type="number" class="" />
+                </div>
+                <div class="col">
+                     <input type="number" class="" />
+                </div>
+             </div>
+            
+            
+            <div class="row">
+                <div class="col">
+                Enter Verbs column no.
+                </div>
+                <div class="col">
+                    <input type="number" class="" />
+                    <button id="" type="submit"> Add Rule </button>
+                    
+                </div>
+                <div class="col">
+                     <input type="number" class="" />
+                </div>
+                <div class="col">
+                     <input type="number" class="" />
+                </div>
+             </div>
+             
+             
+            <div class="row">
+                <div class="col">
+                Enter objects column no.
+                </div>
+                <div class="col">
+                    <input type="number" class="" />
+                    <button id="" type="submit"> Add Rule </button>
+                    
+                </div>
+                <div class="col">
+                     <input type="number" class="" />
+                </div>
+                <div class="col">
+                     <input type="number" class="" />
+                </div>
+             </div>
+             
+             
+             
+            <div class="row">
+                <div class="col">
+                Variables excluder
+                </div>
+                <div class="col">
+                    
+                    <input type="number" class="" />
+                    <button id="" type="submit"> Add New </button>
+                    <span>Rule</span>
+                    <input type="number" class="" />
+                    <button id="" type="submit"> Add Rule </button>
+                    
+                </div>
+                <div class="col">
+                     
+                    <input type="number" class="" />
+                    <button id="" type="submit"> Add New </button>
+                    <span>Rule</span>
+                    <input type="number" class="" />
+                    <button id="" type="submit"> Add Rule </button>
+                </div>
+                <div class="col">
+                     
+                    <input type="number" class="" />
+                    <button id="" type="submit"> Add New </button>
+                    <span>Rule</span>
+                    <input type="number" class="" />
+                    <button id="" type="submit"> Add Rule </button>
+                </div>
+             </div>
+             
+             <div class="row">
+                <div class="col">
+                Cases excluder
+                </div>
+                <div class="col">
+                    <div class="d-flex">
+                    <spanFrom</span>
+                    <input type="number" class="" />
+                    <spanTo</span>
+                    <input type="number" class="" />
+                    </div>
+                    <button id="" type="submit"> Add New </button>
+                    
+                </div>
+                <div class="col">
+                     
+                    <div class="d-flex">
+                    <spanFrom</span>
+                    <input type="number" class="" />
+                    <spanTo</span>
+                    <input type="number" class="" />
+                    </div>
+                    <button id="" type="submit"> Add New </button>
+                </div>
+                <div class="col">
+                     
+                    <div class="d-flex">
+                    <spanFrom</span>
+                    <input type="number" class="" />
+                    <spanTo</span>
+                    <input type="number" class="" />
+                    </div>
+                    <button id="" type="submit"> Add New </button>
+                </div>
+             </div>
+             
+             
+             
+             <div class="row">
+                <div class="col">
+                Requires Cases Aggregator
+                </div><div class="col">
+                    <input type="radio" value="Yes" name="Video" class="Video_features1"/> Yes
+                    <input type="radio" value="No" name="Video" class="Video_features1"/> No
+                    
+                    
+                    <button id="Aggregator1" type="submit"> Add Rule </button>
+                    
+                </div>
+                <div class="col">
+                     <input type="radio" value="Yes" name="Google_form"/> Yes
+                     <input type="radio" value="No" name="Google_form"/> No
+                     
+                     <button id="Aggregator2" type="submit"> Add Rule </button>
+                </div>
+                <div class="col">
+                     <input type="radio" value="Yes" name="Graasp"/> Yes
+                     <input type="radio" value="No" name="Graasp"/> No
+                     
+                     <button id="Aggregator3" type="submit"> Add Rule </button>
+                </div>
+             </div>
+    
+            </div>
+          
+                
+          
           <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Previous</button>
           <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
         </div>
@@ -312,7 +500,11 @@
     <div class="row setup-content" id="step-6">
       <div class="col-xs-6 col-md-offset-3">
         <div class="col-md-12">
-          <h3> Step 2</h3>
+          <h3> Step 6</h3>
+          
+          
+          
+          
           <div class="form-group">
             <label class="control-label">Company Name</label>
             <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Name">
@@ -321,6 +513,17 @@
             <label class="control-label">Company Address</label>
             <input maxlength="200" type="text" required="required" class="form-control" placeholder="Enter Company Address">
           </div>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
           <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Previous</button>
           <button class="btn btn-primary nextBtn btn-lg pull-right" type="button">Next</button>
         </div>
