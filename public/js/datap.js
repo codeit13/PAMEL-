@@ -12,7 +12,10 @@ $(document).ready(function () {
 		let lesson_case_end_time = $('#lesson-case-end-time').val();
 
 		// Step 2 Values
-
+		let activities_start_times = $('.activity-lesson-start-time');
+		let activities_end_times = $('.activity-lesson-end-time');
+		let activites_types = $('.activity-type');
+		let activites_time_zones = $('.activity-time-zone');
 	});
 
 	$('#add-new-activity').click(add_new_activity);
