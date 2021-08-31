@@ -36,6 +36,10 @@ class HomeController extends Controller
         return view('data_process.index');
     }
 
+    public function add_new_case() {
+        return view('add_new_case.index');
+    }
+
     public function blog()
     {
         return view('blog.index');
