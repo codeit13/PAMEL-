@@ -36,6 +36,10 @@ class HomeController extends Controller
         return view('data_process.index');
     }
 
+    public function add_new_case() {
+        return view('add_new_case.index');
+    }
+
     public function blog()
     {
         return view('blog.index');
@@ -44,5 +48,9 @@ class HomeController extends Controller
     public function contact()
     {
         return view('contact.index');
+    }
+
+    public function saveData(Request $request) {
+        Storage::disk('public')->put('case-' . now() . '.json', response()->json($movies));
     }
 }
