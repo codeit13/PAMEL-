@@ -3,10 +3,10 @@
       <div class="col-xs-6 col-md-offset-3">
         <div class="col-md-12">
         <div class="d-flex flex-row align-items-center mb-4">        
-          <h3 class="mt-2 mb-2"> Platform/ Tools Description</h3>
+          <h3 class="mt-2 mb-2"> Data Source Description</h3>
           <div class="d-flex flex-row-reverse" style="flex: auto">
             <div class="">
-                <a id="add-new-platform" class="btn btn-primary">Add New Platform</a>
+                <a id="add-new-platform" class="btn btn-primary">Add New Data Source</a>
             </div>
             <div class="">
                 <input type="text" class="form-control" id="no-of-platforms-to-add">
@@ -25,7 +25,7 @@
     <script id="step-3-template" type="text/template">
     <div class="d-flex">
                     <div class="form-group">
-                        <label class="control-label pr-4 mt-2" style="font-weight:bold">Platform Tool platform_no</label>
+                        <label class="control-label pr-4 mt-2" style="font-weight:bold">Data Source platform_no</label>
                     </div>
                     <div class="form-group">
                         <label class="control-label">App Name</label>

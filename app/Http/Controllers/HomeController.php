@@ -49,4 +49,8 @@ class HomeController extends Controller
     {
         return view('contact.index');
     }
+
+    public function saveData(Request $request) {
+        Storage::disk('public')->put('case-' . now() . '.json', response()->json($movies));
+    }
 }

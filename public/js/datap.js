@@ -6,7 +6,7 @@ $(document).ready(function () {
 	add_new_trim_column();
 
 	$('#add-the-case').click(function () {
-		console.log("Submit Button Clicked");
+		let case_data = [];
 
 		// Step 1 Values
 		let case_details = [];
@@ -16,7 +16,7 @@ $(document).ready(function () {
 		case_details['lesson-start-time'] = $('#lesson-case-start-time').val();
 		case_details['lesson-end-time'] = $('#lesson-case-end-time').val();
 
-		console.log(case_details);
+		case_data['details'] = case_details;
 
 		// Step 2 Values
 		let activities = [];
@@ -35,7 +35,7 @@ $(document).ready(function () {
 			activities[i]['activity_time'] = $(obj).val();
 		});
 
-		console.log(activities);
+		case_data['activities'] = activities;
 
 		// Step 3 Values
 		let platforms = [];
@@ -69,7 +69,7 @@ $(document).ready(function () {
 			platforms[i]['repo_type'] = $(obj).val();
 		});
 
-		console.log(platforms);
+		case_data['platforms'] = platforms;
 
 		// Step 4 Values
 
@@ -114,7 +114,46 @@ $(document).ready(function () {
 		preparation['data_denoising']['rule'] = $('#preparation-data-denoising-rule').val();
 
 
-		console.log(preparation);
+		case_data['preparation'] = preparation;
+
+		// Step 6 Values
+		let organization = [];
+		organization['transform'] = [];
+		organization['transform']['status'] = $('input[name="Requires_Transformation"]:checked').val();
+		organization['transform']['transform-rule'] = $('#sync-rule').val();
+
+		organization['actor'] = [];
+		organization['actor']['number'] = $('#actor-number').val();
+		organization['actor']['rule'] = $('#actor-rule').val();
+
+		organization['verb'] = [];
+		organization['verb']['number'] = $('#verb-number').val();
+		organization['verb']['rule'] = $('#verb-rule').val();
+
+		organization['object'] = [];
+		organization['object']['number'] = $('#object-number').val();
+		organization['object']['rule'] = $('#object-rule').val();
+
+		organization['variables-excluder-1'] = [];
+		organization['variables-excluder-1']['number'] = $('#variables-excluder-number').val();
+		organization['variables-excluder-1']['rule'] = $('#variables-excluder-rule').val();
+
+		organization['variables-excluder-2'] = [];
+		organization['variables-excluder-2']['number'] = $('#variables-excluder-number2').val();
+		organization['variables-excluder-2']['rule'] = $('#variables-excluder-rule2').val();
+
+		organization['case-excluder'] = [];
+		organization['case-excluder']['from'] = $('#case-excluder-from').val();
+		organization['case-excluder']['to'] = $('#case-excluder-to').val();
+		organization['case-excluder']['rule'] = $('#case-excluder-rule').val();
+
+		organization['case-aggregator'] = [];
+		organization['case-aggregator']['status'] = $('input[name="Requires_Case_Aggregator"]:checked').val();
+		organization['case-aggregator']['rule'] = $('#Case-Aggregator-rule').val();
+
+		
+		case_data['organization'] = organization;
+		console.log(case_data);
 
 
 	});
