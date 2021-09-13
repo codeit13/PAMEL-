@@ -8,6 +8,8 @@
             
             </div>
 
+            <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Previous</button>
+          <button class="btn btn-primary nextBtn btn-lg pull-right step-5-start" type="button">Next</button>
       </div>
       </div>
 </div>

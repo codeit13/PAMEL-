@@ -2,8 +2,8 @@ $(document).ready(function () {
 	add_new_activity();
 	add_new_platform();
 
-	add_new_trim_row();
-	add_new_trim_column();
+	// add_new_trim_row();
+	// add_new_trim_column();
 
 	$('#add-the-case').click(function () {
 		let case_data = [];
@@ -42,6 +42,12 @@ $(document).ready(function () {
 		$('.app-name').each(function (i, obj) {
 			platforms.push({
 				'name': $(obj).val()
+			});
+		});
+
+		$('.app-type').each(function (i, obj) {
+			platforms.push({
+				'ds-type': $(obj).val()
 			});
 		});
 
@@ -188,7 +194,8 @@ $(document).ready(function () {
 		return 'LOL';
 	}
 
-	function add_new_insert_files() {
+	function add_new_insert_files(e) {
+		
 		let insert_files_count = $('#insert-files-count').val();
 
 		let step_4_template = document.getElementById("step-4-template");
@@ -199,36 +206,69 @@ $(document).ready(function () {
 		$("#step-4-template-insert-here").append(newHtml);
 
 		$('#insert-files-count').val(parseInt(insert_files_count) + 1);
-
+		// e.stopPropagation();
 		return 'LOL';
 	}
 
-	function add_new_trim_row() {
-		let preparation_rows_count = $('#preparation-rows-count').val();
+	function add_new_trim_row(i) {
+		let preparation_rows_count = $('#preparation-rows-count'+i).val();
 
 		let step_5_template = document.getElementById("step-5-add-new-row-column");
 		let step_5_template_Html = step_5_template.innerHTML;
 
 		let newHtml = step_5_template_Html.replace(/ddtypedd/g, "rows");
 
-		$("#step-5-add-new-row-insert-here").append(newHtml);
+		$("#step-5-add-new-row-insert-here"+i).append(newHtml);
 
-		$('#preparation-rows-count').val(parseInt(preparation_rows_count) + 1);
+		$('#preparation-rows-count'+i).val(parseInt(preparation_rows_count) + 1);
 
 		return 'LOL';
 	}
 
-	function add_new_trim_column() {
-		let preparation_columns_count = $('#preparation-columns-count').val();
+	function add_new_trim_column(i) {
+		let preparation_columns_count = $('#preparation-columns-count'+i).val();
 
 		let step_5_template = document.getElementById("step-5-add-new-row-column");
 		let step_5_template_Html = step_5_template.innerHTML;
 
 		let newHtml = step_5_template_Html.replace(/ddtypedd/g, "columns");
 
-		$("#step-5-add-new-column-insert-here").append(newHtml);
+		$("#step-5-add-new-column-insert-here"+i).append(newHtml);
 
-		$('#preparation-columns-count').val(parseInt(preparation_columns_count) + 1);
+		$('#preparation-columns-count'+i).val(parseInt(preparation_columns_count) + 1);
+
+		return 'LOL';
+	}
+
+	function add_step5_row(ds_name, index) {
+		// let step_5_preparation_count = $('#step5-preparation-count').val();
+
+		let step_5_template = document.getElementById("step-5-template");
+		let step_5_template_Html = step_5_template.innerHTML;
+
+		let newHtml = step_5_template_Html.replace(/_step_5_preparation_count_/g, index)
+										  .replace(/ds_name/g, ds_name);
+
+		$("#step-5-template-insert-here").append(newHtml);
+
+		console.log(index, " done");
+
+		// $('#step5-preparation-count').val(parseInt(step_5_preparation_count) + 1);
+
+		return 'LOL';
+	}
+
+	function add_step6_row(ds_name, index) {
+		let step_6_template = document.getElementById("step-6-template");
+		let step_6_template_Html = step_6_template.innerHTML;
+
+		let newHtml = step_6_template_Html.replace(/_step_6_preparation_count_/g, index)
+										  .replace(/ds_name/g, ds_name);
+
+		$("#step-6-template-insert-here").append(newHtml);
+
+		console.log(index, "done");
+
 
 		return 'LOL';
 	}
@@ -251,11 +291,13 @@ $(document).ready(function () {
 
 	});
 
-	$('.insert-files-next').click(function () {
+	$('.insert-files-next').click(function (event) {
+		
 		let number_of_repo = 0;
 
 		$('.platform-files-count').each(function (i, obj) {
 			number_of_repo += parseInt($(obj).val());
+			console.log("Type" + number_of_repo);
 		});
 
 		for (i = 0; i < number_of_repo; i++) {
@@ -263,39 +305,101 @@ $(document).ready(function () {
 		}
 	});
 
-	$('#preparation-add-new-row').click(add_new_trim_row);
-	$('#preparation-add-new-column').click(add_new_trim_column);
+	$('.step-5-start').click(function () {
+		$('.app-name').each(function (i, obj) {
+				let ds_name  = $(obj).val();
+				// let index = $(obj).data('index');
 
-	$('input[name="Video1"]').change(function () {
-		if ($('input[name="Video1"]:checked').val() == 'Yes') {
-			$('#requires-sync-div').removeClass('f-d-none');
-		} else {
-			$('#requires-sync-div').addClass('f-d-none');
-		}
+				console.log(ds_name);
+				add_step5_row(ds_name, i)
+
+				$('input[name="Video1' + i + '"]').change(function () {
+					if ($('input[name="Video1' + i + '"]:checked').val() == 'Yes') {
+						$('#requires-sync-div' + i + '').removeClass('f-d-none');
+					} else {
+						$('#requires-sync-div' + i + '').addClass('f-d-none');
+					}
+				});
+			
+				$('input[name="Video2' + i + '"]').change(function () {
+					if ($('input[name="Video2' + i + '"]:checked').val() == 'Yes') {
+						$('#requires-time-homo-gen-div' + i + '').removeClass('f-d-none');
+					} else {
+						$('#requires-time-homo-gen-div' + i + '').addClass('f-d-none');
+					}
+				});
+			
+				$('input[name="Video3' + i + '"]').change(function () {
+					if ($('input[name="Video3' + i + '"]:checked').val() == 'Yes') {
+						$('#requires-data-trimming-div' + i + '').removeClass('f-d-none');
+					} else {
+						$('#requires-data-trimming-div' + i + '').addClass('f-d-none');
+					}
+				});
+			
+				$('input[name="Video4' + i + '"]').change(function () {
+					if ($('input[name="Video4' + i + '"]:checked').val() == 'Yes') {
+						$('#requires-data-denoising-div' + i + '').removeClass('f-d-none');
+					} else {
+						$('#requires-data-denoising-div' + i + '').addClass('f-d-none');
+					}
+				});
+
+				$('#preparation-add-new-row' + i).click(function() {
+					add_new_trim_row(i);
+				});
+				$('#preparation-add-new-column' + i).click(function() {
+					add_new_trim_column(i);
+				});
+		});
 	});
 
-	$('input[name="Video2"]').change(function () {
-		if ($('input[name="Video2"]:checked').val() == 'Yes') {
-			$('#requires-time-homo-gen-div').removeClass('f-d-none');
-		} else {
-			$('#requires-time-homo-gen-div').addClass('f-d-none');
-		}
-	});
+	$('.step-6-start').click(function () {
+		$('.app-name').each(function (i, obj) {
+				let ds_name  = $(obj).val();
 
-	$('input[name="Video3"]').change(function () {
-		if ($('input[name="Video3"]:checked').val() == 'Yes') {
-			$('#requires-data-trimming-div').removeClass('f-d-none');
-		} else {
-			$('#requires-data-trimming-div').addClass('f-d-none');
-		}
-	});
+				console.log(ds_name);
+				add_step6_row(ds_name, i)
 
-	$('input[name="Video4"]').change(function () {
-		if ($('input[name="Video4"]:checked').val() == 'Yes') {
-			$('#requires-data-denoising-div').removeClass('f-d-none');
-		} else {
-			$('#requires-data-denoising-div').addClass('f-d-none');
-		}
+				$('input[name="Video1' + i + '"]').change(function () {
+					if ($('input[name="Video1' + i + '"]:checked').val() == 'Yes') {
+						$('#requires-sync-div' + i + '').removeClass('f-d-none');
+					} else {
+						$('#requires-sync-div' + i + '').addClass('f-d-none');
+					}
+				});
+			
+				$('input[name="Video2' + i + '"]').change(function () {
+					if ($('input[name="Video2' + i + '"]:checked').val() == 'Yes') {
+						$('#requires-time-homo-gen-div' + i + '').removeClass('f-d-none');
+					} else {
+						$('#requires-time-homo-gen-div' + i + '').addClass('f-d-none');
+					}
+				});
+			
+				$('input[name="Video3' + i + '"]').change(function () {
+					if ($('input[name="Video3' + i + '"]:checked').val() == 'Yes') {
+						$('#requires-data-trimming-div' + i + '').removeClass('f-d-none');
+					} else {
+						$('#requires-data-trimming-div' + i + '').addClass('f-d-none');
+					}
+				});
+			
+				$('input[name="Video4' + i + '"]').change(function () {
+					if ($('input[name="Video4' + i + '"]:checked').val() == 'Yes') {
+						$('#requires-data-denoising-div' + i + '').removeClass('f-d-none');
+					} else {
+						$('#requires-data-denoising-div' + i + '').addClass('f-d-none');
+					}
+				});
+
+				$('#preparation-add-new-row' + i).click(function() {
+					add_new_trim_row(i);
+				});
+				$('#preparation-add-new-column' + i).click(function() {
+					add_new_trim_column(i);
+				});
+		});
 	});
 
 });

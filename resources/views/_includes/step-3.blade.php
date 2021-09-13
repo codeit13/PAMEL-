@@ -25,12 +25,13 @@
     <script id="step-3-template" type="text/template">
     <div class="d-flex">
                     <div class="form-group">
-                        <label class="control-label pr-4 mt-2" style="font-weight:bold">Data Source platform_no</label>
+                    <label class="control-label">DS Name</label>
+                        <input class="app-name form-control" value="DS platform_no" data-index="platform_no">
                     </div>
                     <div class="form-group">
-                        <label class="control-label">App Name</label>
-                        <select class="app-name form-control" data-index="platform_no">
-                            <option>Choose</option>
+                        <label class="control-label">DS Type</label>
+                        <select class="app-type form-control" data-index="platform_no">
+                            <option disabled selected>Choose</option>
                             <option value="Google_form">Google_form</option>
                             <option value="OpenSpace_video">OpenSpace_video</option>
                             <option value="Graasp">Graasp</option>
@@ -39,7 +40,7 @@
                     <div class="form-group">
                         <label class="control-label">Activity Type</label>
                         <select class="platform-type form-control" data-index="platform_no">
-                            <option>Choose</option>
+                            <option disabled selected>Choose</option>
                             <option value="Post Activity">Post Activity</option>
                             <option value="Pre Lesson">Pre Lesson</option>
                             <option value="Post Lesson">Post Lesson</option>
@@ -52,7 +53,7 @@
                     <div class="form-group">
                         <label class="control-label pl-4">Timezone</label>
                         <select class="platform-timezone form-control" name="timezone">
-                            <option>Choose Timezone</option>
+                            <option disabled selected>Choose</option>
                             <option value="Etc/GMT+12">(GMT-12:00) International Date Line West</option>
                             <option value="Pacific/Midway">(GMT-11:00) Midway Island, Samoa</option>
                             <option value="Pacific/Honolulu">(GMT-10:00) Hawaii</option>
