@@ -21,7 +21,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/about', 'HomeController@about')->name('about');
-Route::get('/data-process', 'HomeController@data_process')->name('data-process')->middleware('auth');;
-Route::get('/add-new-case', 'HomeController@add_new_case')->name('add-new-case')->middleware('auth');;
+
+Route::get('/data-process', 'HomeController@data_process')->name('data-process');
+Route::get('/add-new-case', 'HomeController@add_new_case')->name('add-new-case');
+
+// Route::get('/data-process', 'HomeController@data_process')->name('data-process')->middleware('auth');;
+// Route::get('/add-new-case', 'HomeController@add_new_case')->name('add-new-case')->middleware('auth');;
+
 Route::get('/blog', 'HomeController@blog')->name('blog');
 Route::get('/contact', 'HomeController@contact')->name('contact');
