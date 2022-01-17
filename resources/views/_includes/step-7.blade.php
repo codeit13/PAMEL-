@@ -103,7 +103,7 @@
                         <option value="Actor">Actor</option>
                         <option value="Verb">Verb</option>
                         <option value="Object">Object</option>
-                    </select>              
+                    </select>
                 </div>
 
                 <div class="col ml-2">
