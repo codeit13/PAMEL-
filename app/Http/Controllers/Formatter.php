@@ -8,6 +8,7 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Filesystem\Filesystem;
 
 class Formatter extends Controller
 {
@@ -26,49 +27,20 @@ class Formatter extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public static function formatFromXLSXtoCSV(Request $request)
+    public static function aggregateFiles(Request $request)
     {
+        if($request->hasfile('files'))
+         {  
+            $path = public_path('files');
+            if (\File::exists($path)) \File::deleteDirectory($path);
 
-        Log::info('formatFromXLSXtoCSV Request Data: ' . json_encode($request->all()));
-        Log::info('formatFromXLSXtoCSV Request Data: ' . json_encode($request->file('files')));
-
-        // $id = $request->id;
-        // $request->validate([
-        //   'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:500000',
-        // ]);
-
-        // if ($request->file('file')) {
-        //     $imagePath = $request->file('file');
-        //     $imageName = $imagePath->getClientOriginalName();
-
-        //     $path = $request->file('file')->storeAs('uploads', $imageName);
-        // }
-
-        // $imagePath = '/storage/' . $path;
-
-        // return $imagePath;
-
-        $files = $request->file('files');
-        $paths  = [];
-        $ds_name = $request->post()['ds-name'];
-        $insert_files_n = $request->post()['insert_files_n'];
-        
-        $index = 1;
-        foreach ($files as $file) {
-            $extension = $file->getClientOriginalExtension();
-            $filename  = 'file-' . $ds_name . '-' . $index . '.' . $extension;
-            $paths[] = $file->storeAs('uploads', $filename);
-            $index++;
-        }
-
-        // return response()->json($paths);
-        Storage::disk('public')->put('paths.json', $paths);
-   
-
-        // $path = $request->path;
-        // $DataSource = $request->DataSource;
-        // $DataFile_n = $request->DataFile_n;
-
+            foreach($request->file('files') as $index => $file)
+            {
+                Log::info('File :: ' . ($index+1) . ") " . json_encode($file));
+                $name = ($index+1) . "." . $file->extension();
+                $file->move(public_path().'/files/', $name);  
+            }
+         }
 
         $process = new Process(['python3', '../app/Http/Controllers/Scripts/xlsxtocsv.py']);
         $process->run();
@@ -76,8 +48,15 @@ class Formatter extends Controller
             throw new ProcessFailedException($process);
         }
 
-        return $process->getOutput();
+        Log::info('XLSX_TO_CSV_SCRIPT :: ' . json_encode($process->getOutput()));;
 
+        $process = new Process(['python3', '../app/Http/Controllers/Scripts/aggregate.py']);
+        $process->run();
+        if (!$process->isSuccessful()) {
+            throw new ProcessFailedException($process);
+        }
+
+        return $process->getOutput();
     }
 
 }

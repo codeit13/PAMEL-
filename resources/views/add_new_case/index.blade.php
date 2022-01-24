@@ -55,7 +55,7 @@
                     </div>
                   </div>
 
-              <form role="form" action="" method="post" class="mt-4">
+              <div role="form" action="" method="post" class="mt-4">
 
                 @include('_includes/step-1')
 
@@ -71,7 +71,7 @@
 
                 @include('_includes/step-7')
 
-              </form>
+              </div>
 
               </div>
             </div>

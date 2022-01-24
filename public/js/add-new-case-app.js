@@ -15,7 +15,18 @@ var app = Vue.createApp({
                 },
                 dataSources: {
                     count: 0,
-                    data: []
+                    data: [{
+                        id: 1,
+                        name: "Hello",
+                        dataSourceType: null,
+                        activityType: null,
+                        frequency: null,
+                        timezone: null,
+                        dataFiles: 0,
+                        fileRelation: null,
+                        sourceType: null,
+                        path: null
+                    }]
                 }
             },
             singleActivity: {
@@ -63,6 +74,23 @@ var app = Vue.createApp({
             }
 
             this.config.dataSources.count = this.config.dataSources.data.length
+        },
+        async aggregateForms(event) {
+            // console.log(event.target.children);
+            let dsID = event.target.children[1].value;
+            let formData = new FormData(event.target);
+            console.log(dsID);
+
+            const { data } = await axios.post('/aggregateFiles', formData, {
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+                    "Content-Type": "multipart/form-data",
+                },
+            });
+
+            console.log(data);
+            if(data != "_NO_CSV_FILE_AVAILABLE__") this.config.dataSources.data[dsID].path = data;
+            
         }
     }
 })

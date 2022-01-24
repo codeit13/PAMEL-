@@ -22,14 +22,18 @@
                         <div class="card-body">
                             <div class="d-flex flex-row justify-content-space-between mb-2"
                                 style="place-items: flex-end;">
-                                <form method="POST" enctype="multipart/form-data">
+                                <form method="POST" @submit.prevent="aggregateForms" enctype="multipart/form-data" class="d-flex" style="flex: auto;">
                                     @csrf
-                                    <input type="hidden" v-model="config.dataSources.data[(dataSource.id-1)].name" name="ds-name">
-                                    <input type="hidden" v-model="config.dataSources.data[(dataSource.id-1)].dataFiles" name="insert_files_n" value="insert_files_no">
+                                    <input type="hidden" name="dsID" :value="(dataSource.id-1)">
+                                    <input type="hidden" required="false" v-model="config.dataSources.data[(dataSource.id-1)].name" name="dsName">
+                                    <input type="hidden" required="false" v-model="config.dataSources.data[(dataSource.id-1)].dataFiles" name="dataFiles">
+
                                     <input type="file" name="files[]" class="form-control-file" multiple>
+                                    <input type="text" v-model="config.dataSources.data[(dataSource.id-1)].driveLink" class="form-control" placeholder="paste link">
+
+                                    <button v-if="!config.dataSources.data[(dataSource.id-1)].path" type="submit" class="btn btn-sm btn-primary">Upload</button>
+                                    <a v-if="config.dataSources.data[(dataSource.id-1)].path" :href="config.dataSources.data[(dataSource.id-1)].path" class="btn btn-sm btn-primary">Download</a>
                                 </form>
-                                <input type="text" v-model="config.dataSources.data[(dataSource.id-1)].driveLink" class="form-control" placeholder="paste link">
-                                <button class="btn btn-sm btn-primary">Convert</button>
                             </div>
                         </div>
                     </div>
@@ -44,7 +48,7 @@
 </div>
 
 
-<script id="step-4-template" type="text/template">
+<!-- <script id="step-4-template" type="text/template">
 
     <div class="accordion" id="accordionExample">
             <div class="card">
@@ -74,7 +78,4 @@
   </div>
 </div>
 
-
-
-
-</script>
+</script> -->

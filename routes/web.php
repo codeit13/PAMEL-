@@ -28,4 +28,4 @@ Route::get('/add-new-case', 'HomeController@add_new_case')->name('add-new-case')
 Route::get('/blog', 'HomeController@blog')->name('blog');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 
-Route::post('/aggregateFiles', 'Formatter@formatFromXLSXtoCSV')->name('aggregateFiles');
+Route::post('/aggregateFiles', 'Formatter@aggregateFiles')->name('aggregateFiles');
