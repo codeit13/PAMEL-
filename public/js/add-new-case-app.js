@@ -93,11 +93,16 @@ var app = Vue.createApp({
             
         },
         downloadLatestConfig() {
-            let configString = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.config));
-            let button = document.getElementById('get-latest-config');
-            button.setAttribute("href", configString);
-            button.setAttribute("download", "config.json");
-            button.click();
+
+            this.SaveAsFile(JSON.stringify(this.config),"config.json","application/json;charset=utf-8");
+        },
+        SaveAsFile(t,f,m) {
+            try {
+                var b = new Blob([t],{type:m});
+                saveAs(b, f);
+            } catch (e) {
+                window.open("data:"+m+"," + encodeURIComponent(t), '_blank','');
+            }
         }
     }
 })
