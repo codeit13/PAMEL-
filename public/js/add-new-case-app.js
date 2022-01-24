@@ -17,7 +17,7 @@ var app = Vue.createApp({
                     count: 0,
                     data: [{
                         id: 1,
-                        name: "Hello",
+                        name: "DS 1",
                         dataSourceType: null,
                         activityType: null,
                         frequency: null,
