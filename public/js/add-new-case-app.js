@@ -91,6 +91,13 @@ var app = Vue.createApp({
             console.log(data);
             if(data != "_NO_CSV_FILE_AVAILABLE__") this.config.dataSources.data[dsID].path = data;
             
+        },
+        downloadLatestConfig() {
+            let configString = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(this.config));
+            let button = document.getElementById('get-latest-config');
+            button.setAttribute("href", configString);
+            button.setAttribute("download", "config.json");
+            button.click();
         }
     }
 })

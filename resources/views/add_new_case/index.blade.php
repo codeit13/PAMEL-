@@ -16,7 +16,7 @@
                       {{ __('Data Processing') }}
                       </div>
                       <div>
-                        <button class="btn btn-sm btn-primary" id="get-latest-config">Get Latest Config</button>
+                        <button class="btn btn-sm btn-primary" id="get-latest-config" @click="downloadLatestConfig">Get Latest Config</button>
                       </div>
                   </div>
               </div>
