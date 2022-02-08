@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+
+class Organization extends Controller
 {
     /**
      * Create a new controller instance.
@@ -21,7 +22,22 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function casesExclusion($DataSource, $casesExclusionRule) {
+    public function organisation(Request $request)
+    {
+        $dataSources = $request->data;
+        foreach ($dataSources as $index => $dataSource) {
+            // Write Organization Logic Here
+        }
+
+        return [
+            'status'=> True,
+            'msg' => "Organization Function Linked Successfully"
+        ];
+    }
+
+    public function casesExclusion(Request $request) {
+        $DataSource = $request->dataSource;
+        $casesExclusionRule = $request->casesExclusionRule;
         return "casesExclusion";
     }
 

@@ -15,7 +15,7 @@ if all_filenames:
     #combine all files in the list
     combined_csv = pd.concat([pd.read_csv(f) for f in all_filenames ])
     #export to csv
-    combined_csv.to_csv( "aggregatedFile.csv", index=False, encoding='utf-8-sig')
-    print("/files/aggregatedFile.csv")
+    combined_csv.to_csv( "../files_to_fuse/aggregatedFile.csv", index=False, encoding='utf-8-sig')
+    print("/files_to_fuse/aggregatedFile.csv")
 else:
     print("_NO_CSV_FILE_AVAILABLE__")

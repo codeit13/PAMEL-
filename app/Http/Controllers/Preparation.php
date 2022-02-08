@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class Preparation extends Controller
 {
     /**
      * Create a new controller instance.
@@ -21,6 +21,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function preparation(Request $request)
+    {
+        $dataSources = $request->data;
+        foreach ($dataSources as $index => $dataSource) {
+            // Write Preparation Logic Here
+        }
+
+        return [
+            'status'=> True,
+            'msg' => "Preparation Function Linked Successfully"
+        ];
+    }
     public function aggregation($DataSource, $DataFile_n, $aggregationRule)
     {
         return "aggregation";

@@ -2,7 +2,9 @@
 
 @section('content')
 
-<script type="text/javascript" src="/js/vue.global.prod.js"></script>
+<!-- <script type="text/javascript" src="/js/vue.global.prod.js"></script> -->
+
+<script src="https://cdn.jsdelivr.net/npm/vue@3.2.29/dist/vue.global.js"></script>
 
 <link rel="stylesheet" href="/css/datap.css">
 

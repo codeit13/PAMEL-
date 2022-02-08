@@ -29,3 +29,5 @@ Route::get('/blog', 'HomeController@blog')->name('blog');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 
 Route::post('/aggregateFiles', 'Formatter@aggregateFiles')->name('aggregateFiles');
+Route::post('/preparation', 'Preparation@preparation')->name('preparation');
+Route::post('/organisation', 'Organization@organisation')->name('organisation');

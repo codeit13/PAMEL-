@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class HomeController extends Controller
+class Fusion extends Controller
 {
     /**
      * Create a new controller instance.
@@ -19,6 +19,23 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+    public function fusion(Request $request)
+    {
+        $dataSourcesData = $request->dataSources;
+
+        $columnsRequiredInFusedFile = $request->columnsRequiredInFusedFile;
+
+        $dataSources = $dataSources->data;
+        foreach ($dataSources as $index => $dataSource) {
+            // Write Fusion Logic Here
+        }
+
+        return [
+            'status'=> True,
+            'msg' => "Fusiona Function Linked Successfully"
+        ];
+    }
+
     public function aggregation($DataSource, $DataFile_n, $aggregationRule)
     {
         return "aggregation";
