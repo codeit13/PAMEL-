@@ -122,6 +122,6 @@
 
                 </div>
                 <button class="btn btn-primary prevBtn btn-lg pull-left" type="button">Previous</button>
-                <button class="btn btn-success btn-lg pull-right" id="add-the-case">Submit</button>
+                <button class="btn btn-success btn-lg pull-right" @click="fusion">Submit</button>
             </div>
         </div>

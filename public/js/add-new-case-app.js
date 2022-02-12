@@ -121,6 +121,13 @@ var app = Vue.createApp({
     created() {
         this.addMoreActivities();
         this.addMoreDataSources();
+        this.addMoreDataSources();
+        this.addMoreDataSources();
+
+        this.config.dataSources.data[0].name = "Extracted Features"
+        this.config.dataSources.data[1].name = "Student Evaluation"
+        this.config.dataSources.data[2].name = "Teacher Perception"
+
         this.addMoreFusedFileColumns();
     },
     methods: {
@@ -173,6 +180,7 @@ var app = Vue.createApp({
             let dsID = parseInt(event.target.children[1].value);
             console.log(dsID)
             let sourceType = this.config.dataSources.data[dsID].sourceType
+            let dsName = this.config.dataSources.data[dsID].name
             let data;
 
             if(sourceType == 'G Drive') {
@@ -180,6 +188,7 @@ var app = Vue.createApp({
                 let formData = new FormData();
                 formData.append('sheetID', apiUrl.match("\/d\/(.*?)(\/|$)")[1])
                 formData.append('sourceType', sourceType)
+                formData.append('dsName', dsName)
 
                 const { data } = await axios.post('/aggregateFiles', formData)
                 
@@ -190,6 +199,7 @@ var app = Vue.createApp({
             } else {
                 let formData = new FormData(event.target);
                 formData.append('sourceType', sourceType)
+                formData.append('dsName', dsName)
 
                 const { data } = await axios.post('/aggregateFiles', formData, {
                     headers: {
@@ -229,6 +239,10 @@ var app = Vue.createApp({
             } catch (e) {
                 window.open("data:"+m+"," + encodeURIComponent(t), '_blank','');
             }
+        },
+        async addNewCase_POST() {
+            const { data } = await axios.post('/addNewCase', this.config)
+            console.log(data);
         }
     }
 })

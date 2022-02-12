@@ -18,7 +18,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
+
+    <!-- <script type="text/javascript" src="/js/vue.global.prod.js"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.29/dist/vue.global.js"></script>
+
 </head>
 <body>
     <div id="app">
@@ -89,11 +93,13 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="py-4" id="add-new-case-app">
             @yield('content')
         </main>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <script src="/js/add-new-case-app.js"></script>
 </body>
 </html>

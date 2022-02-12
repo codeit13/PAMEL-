@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -36,8 +37,18 @@ class HomeController extends Controller
         return view('data_process.index');
     }
 
-    public function add_new_case() {
+    public function add_new_case()
+    {
         return view('add_new_case.index');
+    }
+
+    public function addNewCase_POST()
+    {
+        $path = public_path('files_to_fuse');
+        if (\File::exists($path)) {
+            \File::cleanDirectory($path);
+        }
+        return "_DONE_";
     }
 
     public function blog()
@@ -50,7 +61,8 @@ class HomeController extends Controller
         return view('contact.index');
     }
 
-    public function saveData(Request $request) {
+    public function saveData(Request $request)
+    {
         Storage::disk('public')->put('case-' . now() . '.json', response()->json($movies));
     }
 }
