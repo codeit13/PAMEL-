@@ -3,7 +3,6 @@
         <div class="col-md-12">
             <h3 class="mb-2"> Preparation</h3>
 
-
             <div class="container">
 
                 <div class="row mb-4">
@@ -23,7 +22,7 @@
                         <h5 style="font-weight:bold">Requires Denoising</h5>
                     </div>
                 </div>
-                
+
                 <div class="row mb-4" v-for="dataSource in config.dataSources.data">
                     <div class="col" style="font-weight:bold">
                         @{{ dataSource.name }}
@@ -37,13 +36,13 @@
                             <input type="text" class="form-control" v-model="config.dataSources.data[(dataSource.id - 1)].preparation.synchronization.rule" placeholder="Enter Rule" />
                         </div>
                     </div>
-            
+
                     <div class="col">
                         <!-- Requires Time Homo Generation -->
                         <input type="radio" value="YES" v-model="config.dataSources.data[(dataSource.id - 1)].preparation.timeHomoGeneration.requires"/> Yes
                         <input type="radio" value="No" v-model="config.dataSources.data[(dataSource.id - 1)].preparation.timeHomoGeneration.requires" checked/> No
                     </div>
-                
+
                     <div class="col">
                         <!-- Requires Data Trimming -->
                         <input type="radio" value="YES" v-model="config.dataSources.data[(dataSource.id - 1)].preparation.dataTrimming.requires"/> Yes
@@ -71,7 +70,7 @@
                             </div>
                         </div>
                     </div>
-                
+
                     <div class="col">
                         <!-- Requires Denoising -->
                         <input type="radio" value="YES" v-model="config.dataSources.data[(dataSource.id - 1)].preparation.denoising.requires"/> Yes
@@ -82,7 +81,7 @@
                             <input type="text" class="form-control" placeholder="Enter Rule" v-model="config.dataSources.data[(dataSource.id - 1)].preparation.denoising.rule"/>
                         </div>
                     </div>
-                
+
                 </div>
 
             </div>

@@ -15,18 +15,14 @@ for actor in uniqueActors:
     index += 1
     actorDF = df.query('Actor == "' + actor + '"')
     header = ["Actor"]
-    header += actorDF.columns.values.tolist()[3:]
+    header += actorDF.columns.values.tolist()[1:]
 
     s = len(actorDF) // 3
     m = s
     k = 0
     for i in range(3):
-        newRow = []
-        if i == 0:
-            newRow.append(actor)
-        else:
-            newRow.append("")
-        z = list(actorDF.iloc[k:s, 2:-1].mean())
+        newRow = [actor]
+        z = list(actorDF.iloc[k:s, :].mean())
         z = ["%.3f" % elm for elm in z]
 
         aggregatedFile.append(newRow + z)

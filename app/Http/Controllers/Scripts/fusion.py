@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import os, glob
+import sys, os, glob
 
 os.chdir("files_to_fuse")
 
@@ -11,27 +11,30 @@ path = os.getcwd()
 extension = "csv"
 csv_files = [i for i in glob.glob("*.{}".format(extension))]
 
-AveragedOutFiles = []
+fusedFile = pd.read_csv("../template/Fusion.csv")
+header = fusedFile.columns.values.tolist()
 
 # looping over all data source csv files
 for filename in csv_files:
-    print(filename)
-    # read the DS csv file
-    # df = pd.read_csv(filename)
+    df = pd.read_csv(filename)
+    headers = df.columns.values.tolist()
+    del headers[0]
+    if "Disgust" in headers:
+        # Video Features
+        actors = [x for x in df["Actor"].unique() if str(x) != "nan"]
+        for actor in actors:
+            actorRows = df.query("Actor == '" + actor + "'")
+            rowCount = 0
+            for index, row in actorRows.iterrows():
+                actorIndex = fusedFile.index[fusedFile["Actor"] == actor].tolist()
+                rowCount += 1
+                for column in headers:
+                    column_name = "A" + str(rowCount) + "_" + str(column)
+                    fusedFile.at[actorIndex[0], column_name] = row[column]
+    else:
+        # Student & Teacher's Perception
+        fusedFile = pd.concat([fusedFile, df])
 
-    # s = len(df) // 3
-    # m = s
-    # k = 0
-    # a = []
-    # for i in range(3):
-    #     print(df.iloc[k:s, 2:-1].mean())
-    #     z = list(df.iloc[k:s, 2:-1].mean())
-    #     z = ["%.3f" % elm for elm in z]
-    #     a.append(z)
-    #     k += m
-    #     s += m
 
-    # newFile = pd.DataFrame(a, columns=["a", "b", "c", "d", "e", "f", "g"])
-    # newFile.to_csv(filename, index=False, encoding="utf-8-sig")
-
-    # avgedFile = df.groupby(np.arange(len(df))//3).mean()
+newFile = pd.DataFrame(fusedFile, columns=header)
+newFile.to_csv("../Fusion/fusedFile.csv", index=False, encoding="utf-8-sig")
