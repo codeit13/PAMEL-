@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Symfony\Component\Process\Process;
-use Symfony\Component\Process\Exception\ProcessFailedException;
-
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Filesystem\Filesystem;
+use Symfony\Component\Process\Exception\ProcessFailedException;
+use Symfony\Component\Process\Process;
 
 class Formatter extends Controller
 {
@@ -32,13 +29,12 @@ class Formatter extends Controller
         $dsName = $request->dsName;
         $sourceType = $request->sourceType;
 
-        if ($sourceType == 'G Drive')
-        {   $path = public_path('files');
+        if ($sourceType == 'G Drive') {$path = public_path('files');
             if (\File::exists($path)) {
                 \File::deleteDirectory($path);
             }
             $sheetID = $request->sheetID;
-            $process = new Process(['sh', '../app/Http/Controllers/Scripts/getCSVfromSheetPublicURL.sh', $sheetID, 'Sheet1', $dsName]);
+            $process = new Process(['sh', '../app/Http/Controllers/Scripts/getCSVfromSheetPublicURL.sh', $sheetID, 'Sheet1', str_replace(' ', '_', $dsName)]);
             $process->run();
             if (!$process->isSuccessful()) {
                 throw new ProcessFailedException($process);
@@ -46,8 +42,7 @@ class Formatter extends Controller
 
             return $process->getOutput();
 
-        } else if ($sourceType == 'Local System')
-        {
+        } else if ($sourceType == 'Local System') {
             if ($request->hasfile('files')) {
                 $path = public_path('files');
                 if (\File::exists($path)) {
