@@ -3,7 +3,6 @@
         <div class="col-md-12">
 
             <h3 class="mb-2"> Organisation </h3>
-            <button class="btn btn-sm btn-primary" href="peparedFilePath" download>Download Prepared File</button>
 
             <div class="container">
                 <div class="row mb-4">

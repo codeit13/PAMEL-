@@ -11,8 +11,6 @@
     <div class="col-xs-6 col-md-offset-3">
         <div class="col-md-12">
             <h3> Fusion Page</h3>
-            <button class="btn btn-sm btn-primary" href="organisedPath" download>Download Organised File</button>
-            <button class="btn btn-sm btn-primary ml-4" href="fusedFilePath" download>Download Fused File</button>
 
             <div class="form-group d-flex justify-content-center" data-toggle="buttons">
                 <label class="btn btn-primary btn-lg toggle-checkbox primary mr-2">

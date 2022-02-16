@@ -4,6 +4,8 @@ import sys, os, glob
 
 os.chdir("files_to_fuse")
 
+fusedFileName = sys.argv[1].replace(" ", "_") + ".csv"
+
 TIME_WINDOW = 15
 NO_ROWS_TO_MERGE = TIME_WINDOW * 60
 
@@ -37,4 +39,6 @@ for filename in csv_files:
 
 
 newFile = pd.DataFrame(fusedFile, columns=header)
-newFile.to_csv("../Fusion/fusedFile.csv", index=False, encoding="utf-8-sig")
+newFile.to_csv("../Fusion/" + fusedFileName, index=False, encoding="utf-8-sig")
+
+print(fusedFileName)

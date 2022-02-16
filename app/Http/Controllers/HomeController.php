@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\casesData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -34,7 +35,8 @@ class HomeController extends Controller
 
     public function data_process()
     {
-        return view('data_process.index');
+        $casesData = casesData::all();
+        return view('data_process.index')->with('casesData', $casesData);
     }
 
     public function add_new_case()

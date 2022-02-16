@@ -27,6 +27,7 @@ class Formatter extends Controller
     public static function aggregateFiles(Request $request)
     {
         $dsName = $request->dsName;
+        $caseTitle = $request->caseTitle;
         $sourceType = $request->sourceType;
 
         if ($sourceType == 'G Drive') {$path = public_path('files');
@@ -34,7 +35,7 @@ class Formatter extends Controller
                 \File::deleteDirectory($path);
             }
             $sheetID = $request->sheetID;
-            $process = new Process(['sh', '../app/Http/Controllers/Scripts/getCSVfromSheetPublicURL.sh', $sheetID, 'Sheet1', str_replace(' ', '_', $dsName)]);
+            $process = new Process(['sh', '../app/Http/Controllers/Scripts/getCSVfromSheetPublicURL.sh', $sheetID, 'Sheet1', str_replace(' ', '_', $dsName), str_replace(' ', '_', $caseTitle)]);
             $process->run();
             if (!$process->isSuccessful()) {
                 throw new ProcessFailedException($process);
@@ -56,7 +57,7 @@ class Formatter extends Controller
                 }
             }
 
-            $process = new Process(['python3', '../app/Http/Controllers/Scripts/xlsxtocsv.py']);
+            $process = new Process(['python3', '../app/Http/Controllers/Scripts/xlsxtocsv.py', str_replace(' ', '_', $caseTitle)]);
             $process->run();
             if (!$process->isSuccessful()) {
                 throw new ProcessFailedException($process);
@@ -64,7 +65,7 @@ class Formatter extends Controller
 
             Log::info('XLSX_TO_CSV_SCRIPT :: ' . json_encode($process->getOutput()));
 
-            $process = new Process(['python3', '../app/Http/Controllers/Scripts/aggregate.py', $dsName]);
+            $process = new Process(['python3', '../app/Http/Controllers/Scripts/aggregate.py', $dsName, str_replace(' ', '_', $caseTitle)]);
             $process->run();
             if (!$process->isSuccessful()) {
                 throw new ProcessFailedException($process);

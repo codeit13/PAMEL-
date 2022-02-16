@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\casesData;
+use File;
 use Illuminate\Http\Request;
+use ZipArchive;
 
 class Preparation extends Controller
 {
@@ -23,15 +26,45 @@ class Preparation extends Controller
      */
     public function preparation(Request $request)
     {
-        $dataSources = $request->data;
+        $reqData = $request->all();
+        $dataSourcesData = $reqData['dataSources'];
+
+        $dataSources = $reqData['dataSources']['data'];
+        $caseTitle = $reqData['caseTitle'];
         foreach ($dataSources as $index => $dataSource) {
-            // Write Preparation Logic Here
+            // Start of Preparation Logic
+
+            // End of Preparation Logic
+
+            // $oldFileName = str_replace(' ', '_', $dataSource['name']) . '.csv';
+            // $newFileName = str_replace(' ', '_', $caseTitle) . '-' . uniqid() . '-' . $oldFileName;
+            // File::copy(public_path('files_to_fuse/' . $oldFileName), public_path('casesData/' . $newFileName));
         }
 
-        return [
-            'status'=> True,
-            'msg' => "Preparation Function Linked Successfully"
-        ];
+        $zip = new ZipArchive;
+        $zipFileName = str_replace(' ', '_', $caseTitle) . '-Preparation-' . uniqid() . '.zip';
+
+        if ($zip->open(public_path('casesData/' . $zipFileName), ZipArchive::CREATE) === true) {
+            $files = File::files(public_path('files_to_fuse'));
+
+            foreach ($files as $key => $value) {
+                $relativeNameInZipFile = basename($value);
+                $zip->addFile($value, $relativeNameInZipFile);
+            }
+
+            $zip->close();
+
+            casesData::create(array(
+                'caseTitle' => $caseTitle,
+                'preparationFile' => $zipFileName,
+            ));
+
+            return [
+                'status' => true,
+                'msg' => "Preparation Function Linked Successfully",
+                'zipFileName' => $zipFileName,
+            ];
+        }
     }
     public function aggregation($DataSource, $DataFile_n, $aggregationRule)
     {

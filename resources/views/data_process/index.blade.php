@@ -29,22 +29,16 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($casesData as $case)
                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>BS Case 1</td>
-                                    <td> <button class="btn btn-sm btn-primary">Download</button> </td>
-                                    <td> <button class="btn btn-sm btn-primary">Download</button> </td>
-                                    <td> <button class="btn btn-sm btn-primary">Download</button> </td>
-                                    <td> <button class="btn btn-sm btn-primary">Download</button> </td>
+                                    <th scope="row">{{ $case['id'] }}</th>
+                                    <td>{{ $case['caseTitle'] }}</td>
+                                    <td> <a class="btn btn-sm btn-primary" href="/casesData/{{ $case['preparationFile'] }}" download>Download</a> </td>
+                                    <td> <a class="btn btn-sm btn-primary" href="/casesData/{{ $case['organisedFile'] }}" download>Download</a> </td>
+                                    <td> <a class="btn btn-sm btn-primary" href="/casesData/{{ $case['fusedFile'] }}" download>Download</a> </td>
+                                    <td> <a class="btn btn-sm btn-primary" href="/casesData/{{ $case['configFile'] }}" download>Download</a> </td>
                                 </tr>
-                                <tr>
-                                    <th scope="row">2</th>
-                                    <td>BS Case 2</td>
-                                    <td> <button class="btn btn-sm btn-primary">Download</button> </td>
-                                    <td> <button class="btn btn-sm btn-primary">Download</button> </td>
-                                    <td> <button class="btn btn-sm btn-primary">Download</button> </td>
-                                    <td> <button class="btn btn-sm btn-primary">Download</button> </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

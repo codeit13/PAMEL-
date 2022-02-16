@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\casesData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Symfony\Component\Process\Exception\ProcessFailedException;
@@ -29,6 +30,8 @@ class Fusion extends Controller
         $config = $request->all();
         $dataSourcesData = $config['dataSources'];
 
+        $caseTitle = $config['lesson']['caseTitle'];
+
         $columnsRequiredInFusedFile = $config['columnsRequiredInFusedFile'];
 
         $dataSources = $dataSourcesData['data'];
@@ -38,7 +41,7 @@ class Fusion extends Controller
             if ($dataSource["fusion"]["caseAggregation"]["requires"] == "YES") {
                 $dsName = $dataSource["name"];
                 Log::info('Case Aggregation needed for ' . $dsName);
-                $process = new Process(['python3', '../app/Http/Controllers/Scripts/case_aggregation.py', $dsName]);
+                $process = new Process(['python3', '../app/Http/Controllers/Scripts/case_aggregation.py', $dsName, $caseTitle]);
                 $process->run();
                 if (!$process->isSuccessful()) {
                     throw new ProcessFailedException($process);
@@ -48,18 +51,29 @@ class Fusion extends Controller
             }
         }
 
-        $process = new Process(['python3', '../app/Http/Controllers/Scripts/fusion.py']);
+        $process = new Process(['python3', '../app/Http/Controllers/Scripts/fusion.py', $caseTitle . '-' . uniqid()]);
         $process->run();
         if (!$process->isSuccessful()) {
             throw new ProcessFailedException($process);
         }
 
-        return $process->getOutput();
+        $fusedFileName = $process->getOutput();
 
-        // return [
-        //     'status' => true,
-        //     'msg' => "Fusiona Function Linked Successfully",
-        // ];
+        $configFilename = $caseTitle . '-config-' . uniqid() . '.json';
+
+        $configJsonString = json_encode($config, JSON_PRETTY_PRINT);
+        file_put_contents(base_path('public/casesData/' . $configFilename), stripslashes($configJsonString));
+
+        casesData::where('caseTitle', $caseTitle)->update(array(
+            'fusedFile' => $fusedFileName,
+            'configFile' => $configFilename,
+        ));
+
+        return [
+            'status' => true,
+            'msg' => "Fusion Function Linked Successfully",
+            'fusedFile' => $fusedFileName,
+        ];
     }
 
     public function aggregation($DataSource, $DataFile_n, $aggregationRule)

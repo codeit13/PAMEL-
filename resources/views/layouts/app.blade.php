@@ -22,6 +22,7 @@
     <!-- <script type="text/javascript" src="/js/vue.global.prod.js"></script> -->
 
     <script src="https://cdn.jsdelivr.net/npm/vue@3.2.29/dist/vue.global.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 <body>
