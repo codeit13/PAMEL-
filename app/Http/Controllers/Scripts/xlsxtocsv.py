@@ -19,6 +19,6 @@ for filename in os.listdir(FILES_DIR):
         fileArr = os.path.splitext(filename)
         if fileArr[1] == ".xlsx":
             print("XLSX_FOUND")
-            read_file = pd.read_excel(file)
+            read_file = pd.read_excel(file, engine='openpyxl')
             newFileName = FILES_DIR + "/" + fileArr[0] + ".csv"
             read_file.to_csv(newFileName, index=None, header=True)
