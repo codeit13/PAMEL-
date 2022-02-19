@@ -33,7 +33,7 @@ if all_filenames:
     # export to csv
     filename = sys.argv[1].replace(" ", "_") + ".csv"
     combined_csv.to_csv(
-        "files_to_fuse/" + filename, index=False, encoding="utf-8-sig"
+        "../files_to_fuse/" + filename, index=False, encoding="utf-8-sig"
     )
     # print("/files_to_fuse/aggregatedFile.csv")
     print("/files_to_fuse/" + filename)
