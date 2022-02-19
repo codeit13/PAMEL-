@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import sys, os
 import glob
 import pandas as pd

@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import getpass
 
 print("WHICH USER ::::::::::::::::::::::::: ", getpass.getuser())
