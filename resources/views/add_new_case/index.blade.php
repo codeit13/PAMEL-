@@ -53,8 +53,8 @@
                     </div>
                   </div>
 
-              <div role="form" action="" method="post" class="mt-4">
-
+              <div role="form" action="" method="post" class="mt-4" id="add-new-case-div">
+              <div class=""></div>
                 @include('_includes/step-1')
 
                 @include('_includes/step-2')

@@ -204,6 +204,8 @@ var app = Vue.createApp({
             let caseTitle = this.config.lesson.caseTitle;
             let data;
 
+            document.querySelector("#add-new-case-div > div:nth-child(1)").classList.add("loader");
+
             if (sourceType == "G Drive") {
                 let apiUrl = event.target.children[4].value;
                 let formData = new FormData();
@@ -246,13 +248,16 @@ var app = Vue.createApp({
                             this.config.dataSources.data[dsID].name
                     );
             }
+            document.querySelector("#add-new-case-div > div:nth-child(1)").classList.remove("loader");
         },
         async preparation(event) {
+            document.querySelector("#add-new-case-div > div:nth-child(1)").classList.add("loader");
             const { data } = await axios.post("/preparation", {
                 dataSources: this.config.dataSources,
                 caseTitle: this.config.lesson.caseTitle,
             });
             console.log(data);
+            document.querySelector("#add-new-case-div > div:nth-child(1)").classList.remove("loader");
             Swal.fire({
                 title: "Preparation Completed!",
                 text: "You can Proceed to Organisation Step",
@@ -261,11 +266,13 @@ var app = Vue.createApp({
             });
         },
         async organisation(event) {
+            document.querySelector("#add-new-case-div > div:nth-child(1)").classList.add("loader");
             const { data } = await axios.post("/organisation", {
                 dataSources: this.config.dataSources,
                 caseTitle: this.config.lesson.caseTitle,
             });
             console.log(data);
+            document.querySelector("#add-new-case-div > div:nth-child(1)").classList.remove("loader");
             Swal.fire({
                 title: "Organisation Completed!",
                 text: "You can Proceed to Fusion Step",
@@ -274,8 +281,11 @@ var app = Vue.createApp({
             });
         },
         async fusion(event) {
+            document.querySelector("#add-new-case-div > div:nth-child(1)").classList.add("loader");
             const { data } = await axios.post("/fusion", this.config);
+            
             console.log(data);
+            document.querySelector("#add-new-case-div > div:nth-child(1)").classList.remove("loader");
             Swal.fire({
                 title: "Fusion Completed!",
                 text: "Head over to the Data Processing tab from top menu to download all your files",

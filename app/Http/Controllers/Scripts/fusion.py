@@ -41,6 +41,6 @@ for filename in csv_files:
 
 
 newFile = pd.DataFrame(fusedFile, columns=header)
-newFile.to_csv("../Fusion/" + fusedFileName, index=False, encoding="utf-8-sig")
+newFile.to_csv("../casesData/" + fusedFileName, index=False, encoding="utf-8-sig")
 
 print(fusedFileName)
