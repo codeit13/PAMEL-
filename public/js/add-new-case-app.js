@@ -113,13 +113,13 @@ var app = Vue.createApp({
     },
     created() {
         this.addMoreActivities();
-        this.addMoreDataSources();
-        this.addMoreDataSources();
-        this.addMoreDataSources();
+        // this.addMoreDataSources();
+        // this.addMoreDataSources();
+        // this.addMoreDataSources();
 
-        this.config.dataSources.data[0].name = "Extracted Features";
-        this.config.dataSources.data[1].name = "Student Evaluation";
-        this.config.dataSources.data[2].name = "Teacher Perception";
+        // this.config.dataSources.data[0].name = "Extracted Features";
+        // this.config.dataSources.data[1].name = "Student Evaluation";
+        // this.config.dataSources.data[2].name = "Teacher Perception";
 
         this.addMoreFusedFileColumns();
     },
@@ -283,7 +283,7 @@ var app = Vue.createApp({
         async fusion(event) {
             document.querySelector("#add-new-case-div > div:nth-child(1)").classList.add("loader");
             const { data } = await axios.post("/fusion", this.config);
-            
+
             console.log(data);
             document.querySelector("#add-new-case-div > div:nth-child(1)").classList.remove("loader");
             Swal.fire({
