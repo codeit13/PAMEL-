@@ -5,7 +5,6 @@
 <link rel="stylesheet" href="/css/datap.css">
 
 <div class="container">
-  <?php echo phpinfo(); ?>
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
