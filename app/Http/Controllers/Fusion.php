@@ -62,7 +62,7 @@ class Fusion extends Controller
         $configFilename = $caseTitle . '-config-' . uniqid() . '.json';
 
         $configJsonString = json_encode($config, JSON_PRETTY_PRINT);
-        file_put_contents(base_path('public/casesData/' . $configFilename), stripslashes($configJsonString));
+        file_put_contents(base_path('casesData/' . $configFilename), stripslashes($configJsonString));
 
         casesData::where('caseTitle', $caseTitle)->update(array(
             'fusedFile' => $fusedFileName,
