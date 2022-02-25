@@ -23,6 +23,14 @@ for filename in csv_files:
     df = pd.read_csv(filename)
     headers = df.columns.values.tolist()
     del headers[0]
+    if "Disgust" not in headers:
+        # Student & Teacher's Perception
+        fusedFile = pd.concat([fusedFile, df])
+
+for filename in csv_files:
+    df = pd.read_csv(filename)
+    headers = df.columns.values.tolist()
+    del headers[0]
     if "Disgust" in headers:
         # Video Features
         actors = [x for x in df["Actor"].unique() if str(x) != "nan"]
@@ -35,9 +43,6 @@ for filename in csv_files:
                 for column in headers:
                     column_name = "A" + str(rowCount) + "_" + str(column)
                     fusedFile.at[actorIndex[0], column_name] = row[column]
-    else:
-        # Student & Teacher's Perception
-        fusedFile = pd.concat([fusedFile, df])
 
 
 newFile = pd.DataFrame(fusedFile, columns=header)
