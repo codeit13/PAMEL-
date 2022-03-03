@@ -22,8 +22,8 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Case Title</th>
-                                    <th scope="col">Preparation File</th>
-                                    <th scope="col">Organised File</th>
+                                    <th scope="col">Prepared File</th>
+                                    <th scope="col">Organized File</th>
                                     <th scope="col">Fused File</th>
                                     <th scope="col">Config File</th>
                                 </tr>
