@@ -2,7 +2,7 @@
     <div class="col-xs-6 col-md-offset-3">
         <div class="col-md-12">
             <input type="hidden" value="0" id="insert-files-count">
-            <h3 class="mb-2 mt-2"> Insert files</h3>
+            <h3 class="mb-2 mt-2"> Upload Data Files</h3>
 
             <!-- Starts here -->
             <div v-for="dataSource in config.dataSources.data" class="accordion">
