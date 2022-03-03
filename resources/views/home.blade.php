@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-            <img class="card-img-top" src="{{ asset('images/pamel.png') }}" alt="About Image">
+            <img class="card-img-top" src="{{ asset('images/pamel1.png') }}" alt="About Image">
             <div class="card-header">{{ __('Brief Description') }}</div>
             <div class="card-body">
                 <p class="card-text">
