@@ -13,7 +13,7 @@
                         <h5 style="font-weight:bold">Requires Synchronization</h5>
                     </div>
                     <div class="col">
-                        <h5 style="font-weight:bold">Requires Time Homo Generation</h5>
+                        <h5 style="font-weight:bold">Requires Time Homogenization</h5>
                     </div>
                     <div class="col">
                         <h5 style="font-weight:bold">Requires Data Trimming</h5>
