@@ -42,10 +42,9 @@
                             <div
                                 v-if="config.dataSources.data[(dataSource.id - 1)].organisation.transformation.requires === 'YES'">
                                 <br>
-                                <span> Transform </span>
                                 <input type="text" class="mb-2 form-control"
                                     v-model="config.dataSources.data[(dataSource.id - 1)].organisation.transformation.rule"
-                                    placeholder="Add Rule" size="12" />
+                                    placeholder="Enter transformation rule" size="12" />
                             </div>
                         </div>
 
@@ -53,7 +52,7 @@
                             <!-- Enter Actors column no. -->
                             <input type="number" class="mb-2 form-control" min="1" max="8"
                                 v-model="config.dataSources.data[(dataSource.id - 1)].organisation.actors.colNo" />
-                            <input type="text" class="mb-2 form-control" placeholder="Add Rule" size="12"
+                            <input type="text" class="mb-2 form-control" placeholder="Enter actor arrangement rule" size="12"
                                 v-model="config.dataSources.data[(dataSource.id - 1)].organisation.actors.rule" />
                         </div>
 
@@ -61,7 +60,7 @@
                             <!-- Enter Verbs column no. -->
                             <input type="number" class="mb-2 form-control" min="1" max="8"
                                 v-model="config.dataSources.data[(dataSource.id - 1)].organisation.verbs.colNo" />
-                            <input type="text" class="mb-2 form-control" placeholder="Add Rule" size="12"
+                            <input type="text" class="mb-2 form-control" placeholder="Enter verb arrangement rule" size="12"
                                 v-model="config.dataSources.data[(dataSource.id - 1)].organisation.verbs.rule" />
                         </div>
 
@@ -69,7 +68,7 @@
                             <!-- Enter objects column no. -->
                             <input type="number" class="mb-2 form-control" min="1" max="8"
                                 v-model="config.dataSources.data[(dataSource.id - 1)].organisation.objects.colNo" />
-                            <input type="textarea" class="mb-2 form-control" placeholder="Add Rule" size="12"
+                            <input type="textarea" class="mb-2 form-control" placeholder="Enter object arrangement rule" size="12"
                                 v-model="config.dataSources.data[(dataSource.id - 1)].organisation.objects.rule" />
                         </div>
 
