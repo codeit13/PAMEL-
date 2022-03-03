@@ -2,7 +2,7 @@
     <div class="col-xs-6 col-md-offset-3">
         <div class="col-md-12">
 
-            <h3 class="mb-2"> Organisation </h3>
+            <h3 class="mb-2"> Organization </h3>
 
             <div class="container">
                 <div class="row mb-4">
