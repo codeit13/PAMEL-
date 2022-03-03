@@ -10,7 +10,7 @@
 <div class="row setup-content" id="step-7">
     <div class="col-xs-6 col-md-offset-3">
         <div class="col-md-12">
-            <h3> Fusion Page</h3>
+            <h3> Fusion</h3>
 
             <div class="form-group d-flex justify-content-center" data-toggle="buttons">
                 <label class="btn btn-primary btn-lg toggle-checkbox primary mr-2">
@@ -61,10 +61,10 @@
                                     <div
                                         v-if="config.dataSources.data[(dataSource.id - 1)].fusion.caseAggregation.requires === 'YES'">
                                         <br />
-                                        <span> Verb 1 </span>
-                                        <input type="text" class="mb-2 form-control" placeholder="Add Rule" size="12"
+                                        <span> Verb-related </span>
+                                        <input type="text" class="mb-2 form-control" placeholder="Enter mapping rule" size="12"
                                             v-model="config.dataSources.data[(dataSource.id - 1)].fusion.caseAggregation.verb1.addRule" />
-                                        <input type="text" class="mb-2 form-control" placeholder="missing Rule"
+                                        <input type="text" class="mb-2 form-control" placeholder="Enter join rule"
                                             size="12"
                                             v-model="config.dataSources.data[(dataSource.id - 1)].fusion.caseAggregation.verb1.missingRule" />
                                         <br />
